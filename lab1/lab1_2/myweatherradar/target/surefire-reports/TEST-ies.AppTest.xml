@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ies.AppTest" time="0.023" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ies.AppTest" time="0.024" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.12.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire/surefirebooter5242990571791816511.jar /Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire 2021-10-15T21-16-49_226-jvmRun1 surefire7147892061605657832tmp surefire_03524020423327155629tmp"/>
+    <property name="sun.java.command" value="/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire/surefirebooter2372291194675542045.jar /Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire 2021-10-15T22-17-22_805-jvmRun1 surefire9487087986410408577tmp surefire_015487617457460723611tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/test-classes:/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/classes:/Users/miguelferreira/.m2/repository/com/squareup/retrofit2/retrofit/2.3.0/retrofit-2.3.0.jar:/Users/miguelferreira/.m2/repository/com/squareup/okhttp3/okhttp/3.8.0/okhttp-3.8.0.jar:/Users/miguelferreira/.m2/repository/com/squareup/okio/okio/1.13.0/okio-1.13.0.jar:/Users/miguelferreira/.m2/repository/com/squareup/retrofit2/converter-gson/2.3.0/converter-gson-2.3.0.jar:/Users/miguelferreira/.m2/repository/com/google/code/gson/gson/2.7/gson-2.7.jar:/Users/miguelferreira/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/miguelferreira/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire/surefirebooter5242990571791816511.jar"/>
+    <property name="surefire.real.class.path" value="/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab1/lab1_2/myweatherradar/target/surefire/surefirebooter2372291194675542045.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="11.0.12+8-LTS-237"/>

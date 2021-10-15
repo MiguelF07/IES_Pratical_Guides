@@ -8,6 +8,7 @@ import ies.IpmaCityForecast;
 import ies.IpmaService;
 
 import java.util.logging.Logger;
+import java.util.Scanner;
 
 /**
  * demonstrates the use of the IPMA API for weather forecast
@@ -21,6 +22,15 @@ public class WeatherStarter {
      */
     private static final Logger logger = Logger.getLogger(WeatherStarter.class.getName());
 
+    public static int getID() 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insert the ID of the city you want to check:");
+        Integer id = sc.nextInt();
+        sc.close();
+        return id;
+    }
+
     public static void  main(String[] args ) {
 
         /*
@@ -31,16 +41,26 @@ public class WeatherStarter {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        //Calls the function that asks for the id
+        Integer id = getID();
+
         IpmaService service = retrofit.create(IpmaService.class);
-        Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_AVEIRO);
+        Call<IpmaCityForecast> callSync = service.getForecastForACity(id);
 
         try {
             Response<IpmaCityForecast> apiResponse = callSync.execute();
             IpmaCityForecast forecast = apiResponse.body();
 
             if (forecast != null) {
-                logger.info( "max temp for today: " + forecast.getData().
+                logger.info( "Forecast Date: " + forecast.getData().
+                listIterator().next().getForecastDate());
+                logger.info( "Maximum temperature for today: " + forecast.getData().
                         listIterator().next().getTMax());
+                logger.info( "Minimum temperature for today: " + forecast.getData().
+                listIterator().next().getTMin());
+                logger.info( "Precipitation %: " + forecast.getData().
+                listIterator().next().getPrecipitaProb());
+                
             } else {
                 logger.info( "No results!");
             }
