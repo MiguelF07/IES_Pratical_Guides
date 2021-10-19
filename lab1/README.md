@@ -47,7 +47,9 @@ Maven allows us to:
 
 To confirm our Maven version, we can use this command:
 
-`mvn --version`
+```bash
+mvn --version
+```
 
 <h3>How are Maven projects structured?</h3>
 
@@ -59,25 +61,33 @@ We can also find two **folders**:
 
 To clean our project, in order to deliver it, we can use the following command:
 
-`mvn clean`
+```bash
+mvn clean
+```
+
+
 
 <h2>GIT</h2>
 
 To initiate a git project, we can travel to our destination folder and use the command:
 
-`git init`
+```bash
+git init
+```
 
 Then we can add the link ou our upstream:
 
-`git remote add origin *OUR LINK*`
+```bash
+git remote add origin *OUR LINK*
+```
 
 Then, to add and commit our changes:
 
-`git add .` -> To stage the files to be commited
-
-`git commit -m "commit message"`to commit locally
-
-`git push -u origin main` -> to push to our repository
+```bash
+git add .  #To stage the files to be commited
+git commit -m "commit message"  #To commit locally
+git push -u origin main  #To push to our repository
+```
 
 
 
@@ -89,9 +99,156 @@ A container is a process in execution that is isolated from other containers and
 
 A **Docker Image** has it's own software, libraries, etc...
 
+A **Dockerfile** describes how the file system works.
+
+When we create a Dockerfile we're able to build the first Docker Image. When building, the instructions on the Dockerfile will be executed.
+We can do that with these commands:
+
+```bash
+cd *source directory*
+docker --build --tag <tagName> .
+```
+
+I created a Dockerfile on the project I downloaded from the Docker tutorial.
+The file is named Dockerfile and has the following content:
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM node:12-alpine
+RUN apk add --no-cache python g++ make
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+```
+Then I built the container image navegating to the app folder and using the following command:
+
+```bash
+docker build -t getting-started .
+```
+
+To run the image:
+
+```bash
+docker run -dp 3000:3000 getting-started
+```
 
 
 
+<h4>Portainer</h4>
+
+Portainer is a Docker managing app that we can access from our browser.
+
+To install portainer I used:
+
+```bash
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+
+These were the commands that were available on the "Install Portainer CE" [page](https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl) .
+
+So, to access Portainer, I accessed: https://localhost:9443
+
+To login to **Portainer**:
+user: **admin**
+pass: **adminadmin**
 
 
 
+<h4>PostgresSQL</h4>
+
+To run Postgres we will use a custom made image.
+
+To do that we use:
+
+```bash
+docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e PGDATA=/tmp -d -p 5433:5432 -v ${PWD}:/var/lib/postgresql/data postgres:11
+```
+
+**-p 5432:5432** associates the port of the host to the port of the image
+
+In my case, I replaced the ${PWD} with the path to a folder in the repository. So, the full command was:
+
+```bash
+docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e PGDATA=/tmp -d -p 5432:5432 -v /Users/miguelferreira/Desktop/Universidade/3º\ Ano/IES/IES_98599/lab1/database_server:/var/lib/postgresql/data postgres:11
+```
+
+
+
+<h2>The Get started with Docker Compose Tutorial</h2>
+
+**What is Docker Compose?**
+Compose is **a tool for defining and running multi-container Docker applications**.
+
+The tutorial can be accessed [here](https://docs.docker.com/compose/gettingstarted/).
+
+Structure of the files created:
+
+* app.py -> Has the app code
+* requirements.txt -> Has the requirements that need to be installed for the app to run
+* Dockerfile -> File to create a Docker Image that contains all the dependencies the Python application requires
+
+Contents of the Dockerfile:
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM python:3.7-alpine	#Build an image starting with the Python 3.7 		image.
+WORKDIR /code #Set the working directory to /code.
+ENV FLASK_APP=app.py	#Set environment variables used by the flask command.
+ENV FLASK_RUN_HOST=0.0.0.0	#Set environment variables used by the flask command.
+RUN apk add --no-cache gcc musl-dev linux-headers #Install gcc and other dependencies
+COPY requirements.txt requirements.txt #Copy requirements.txt and install the Python dependencies.
+RUN pip install -r requirements.txt
+EXPOSE 5000	#Add metadata to the image to describe that the container is listening on port 5000
+COPY . .	#Copy the current directory . in the project to the workdir . in the image.
+CMD ["flask", "run"]	#Set the default command for the container to flask run.
+```
+
+
+
+The Composer file defines two services: `web` and `redis`.
+
+To start the application, we can use this command from the project directory:
+
+```bash
+docker-compose up
+```
+
+To run the app we can access http://localhost:5000
+
+If we add 
+
+```dockerfile
+volumes:
+  - .:/code
+environment:
+  FLASK_ENV: development
+```
+
+to the docker-compose.pml we will be able to modify the code on the fly, without having to rebuild the image.
+The `volumes` key mounts the project directory on the host to `/code` inside the container.
+The `environment` key sets the `FLASK_ENV` environment variable, which tells `flask run` to run in development mode and reload the code on change.
+
+Some other commands:
+
+```bash
+docker-compose run web env #to see what environment variables are available to the web service
+docker-compose down --volumes #this command brings everything down, removing the containers totally and removing the data volume used by the Redis container
+```
+
+
+
+<h1>To Sum up...</h1>
+
+This pratical guide was focused on Team work.
+We focused on Git, Maven, Docker, etc...
+
+Here is a little scheme that illustrates how these three main technologies interact with each other:
+
+--> GIT: Source Code Manager
+|   ^
+|   |
+|   -- Maven: Build anywhere
+|
+-- Docker: Run Anywhere
