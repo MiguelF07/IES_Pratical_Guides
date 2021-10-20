@@ -171,7 +171,7 @@ docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e PGDATA=/tmp -d -p 543
 In my case, I replaced the ${PWD} with the path to a folder in the repository. So, the full command was:
 
 ```bash
-docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e PGDATA=/tmp -d -p 5432:5432 -v /Users/miguelferreira/Desktop/Universidade/3º\ Ano/IES/IES_98599/lab1/database_server:/var/lib/postgresql/data postgres:11
+docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e PGDATA=/tmp -d -p 5432:5432 -v /Users/miguelferreira/Desktop/Universidade/3º\ Ano/IES/IES_98599/lab1/1_4/database_server:/var/lib/postgresql/data postgres:11
 ```
 
 
@@ -239,6 +239,119 @@ docker-compose down --volumes #this command brings everything down, removing the
 
 
 
+<h3>In 1.5</h3>
+
+In this project we separated the *ipmaapiclient* and the *weatherforecastbycity* implementation.
+Because of this separation, we needed to add a dependency to *weatherforecastbycity* of the ipmaapiclient.
+To do so, we added this dependency to the POM.xml of the *weatherforecastbycity* project:
+
+<dependency>
+
+​      <groupId>ies</groupId>
+
+​      <artifactId>ipmaapiclient</artifactId>
+
+​      <version>1.0-SNAPSHOT</version>
+
+​      <scope>compile</scope>
+
+</dependency>
+
+
+
+<h2>Answering the Review Questions</h2>
+
+**A)  Maven has three lifecycles: clean, site and default. Explain the main phases in the default lifecycle.**
+The default lifecyle is the main life cycle. It's responsible for project deployment.
+The default lifecycle consists of 23 phases, which with it's own purpose.
+
+* **Validate** -> Checking if all information necessary for the build is available
+* **Initialize** -> Initializing the build directories
+* **Generate-sources** -> Generating the source code
+* **Process-sources** -> Processing of source code
+* **Generate-resources** -> Generating resources information
+* **Process-resources** -> Processing the resources
+* **Compile** -> Compilation of project structure
+* **Process-classes** -> Processing of generated compiled classes
+* **Generate-test-sources** -> Generating the test source code
+* **Process-test-sources** -> Processing of test source code
+* **Generate-test-resources** -> Generation of resource for testing
+* **Process-test-classes** -> Processing of compiled test class file.
+* **Test** -> Run the generated test cases
+* **Prepare-package** -> Perform prepackaging operations. It us output an unpacked processed version
+* **Package** -> Perform the packaging in a distributed format like jar
+* **Pre-integration-test** -> Preparation for the integration test
+* **Integration-test** -> Performing integration test
+* **Post-integration-test** -> Perform the action required to perform after the integration test. E.g. Cleaning up the environment
+* **Verify** -> Verifying the generated distributed package
+* **Install** -> Install the package into the local repository
+* **Deploy** -> Copying the final build to a remote repository
+
+[Source](https://medium.com/javarevisited/maven-build-lifecycle-explained-ede8494a3d48)
+
+**B)  Maven is a build tool; is it appropriate to run your project too?**
+Maven was made to configure projects and build them, with their dependencies, resulting in artifacts.
+Even tho it's made mainly for building purposes, it can also run the projects with specific plugins.
+
+**C)  What would be a likely sequence of Git commands required to contribute with a new feature to a given project? (i.e., get a fresh copy, develop some increment, post back the added functionality)**
+We'd have to access the project repository and clone it to our computer with:
+
+```bash
+git clone *giturl*
+```
+
+If we had the project already, we should pull the more recent version from the repository:
+
+```bash
+git pull
+```
+
+Then, we'd add our modifications and stage them:
+
+```bash
+git add .
+```
+
+Then, we'd commit the changes locally:
+
+```bash
+git commit -m "commit message"
+```
+
+And finally, we'd push the changes to the remote repository:
+
+```bash
+git push
+```
+
+
+
+**D)  There are strong opinions on how to write Git commit messages... Find some best practices online and give your own informed recommendations on how to write good commit messages (in a team project).**
+
+Searching the web I found some good practices:
+
+* Specify the type of commit:
+  * feat: The new feature you're adding to a particular application
+  * fix: A bug fix
+  * style: Feature and updates related to styling
+  * refactor: Refactoring a specific section of the codebase
+  * test: Everything related to testing
+  * docs: Everything related to documentation
+  * chore: Regular code maintenance.[ You can also use emojis to represent commit types]
+* Separate the subject from the body with a blank line
+* Your commit message should not contain any whitespace errors
+* Remove unnecessary punctuation marks
+* Do not end the subject line with a period
+* Capitalize the subject line and each paragraph
+* Use the imperative mood in the subject line
+* Use the body to explain what changes you have made and why you made them.
+* Do not assume the reviewer understands what the original problem was, ensure you add it.
+* Do not think your code is self-explanatory
+* Follow the commit convention defined by your team
+
+**E)  Docker automatically prepares the required volume space as you start a container. Why is it important that you take an extra step configuring the volumes for a (production) database?**
+Docker volumes are important **because when a Docker container is destroyed, its entire file system is destroyed too**. So if we want to keep this data, it is necessary that we use Docker volumes. This makes it easier to backup production databases, so it makes data safer.
+
 <h1>To Sum up...</h1>
 
 This pratical guide was focused on Team work.
@@ -252,3 +365,4 @@ Here is a little scheme that illustrates how these three main technologies inter
 |   -- Maven: Build anywhere
 |
 -- Docker: Run Anywhere
+
