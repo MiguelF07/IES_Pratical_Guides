@@ -1,7 +1,7 @@
-# Lab 1
+# Lab 1 - 98599
 IES Individual Classes Portfolio - Lab 1
 
-
+Miguel Ferreira, P1, 98599
 
 https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/
 This link has information on how to set the $JAVA_HOME variable.
@@ -351,6 +351,8 @@ Searching the web I found some good practices:
 
 **E)  Docker automatically prepares the required volume space as you start a container. Why is it important that you take an extra step configuring the volumes for a (production) database?**
 Docker volumes are important **because when a Docker container is destroyed, its entire file system is destroyed too**. So if we want to keep this data, it is necessary that we use Docker volumes. This makes it easier to backup production databases, so it makes data safer.
+
+
 
 <h1>To Sum up...</h1>
 
