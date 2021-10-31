@@ -1,0 +1,52 @@
+26-Oct-2021 14:41:34.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.54
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2021 13:51:49 UTC
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.54.0
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.16
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-11.0.12.jdk/Contents/Home
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.12+8-LTS-237
+26-Oct-2021 14:41:34.852 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+26-Oct-2021 14:41:34.853 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54
+26-Oct-2021 14:41:34.853 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54
+26-Oct-2021 14:41:34.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+26-Oct-2021 14:41:34.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/conf/logging.properties
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+26-Oct-2021 14:41:34.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54
+26-Oct-2021 14:41:34.903 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54
+26-Oct-2021 14:41:34.903 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/temp
+26-Oct-2021 14:41:34.905 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/miguelferreira/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+26-Oct-2021 14:41:35.198 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+26-Oct-2021 14:41:35.254 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [614] milliseconds
+26-Oct-2021 14:41:35.301 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+26-Oct-2021 14:41:35.301 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.54]
+26-Oct-2021 14:41:35.309 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/docs]
+26-Oct-2021 14:41:35.520 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/docs] has finished in [210] ms
+26-Oct-2021 14:41:35.520 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/manager]
+26-Oct-2021 14:41:35.549 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/manager] has finished in [29] ms
+26-Oct-2021 14:41:35.549 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/examples]
+26-Oct-2021 14:41:35.748 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/examples] has finished in [199] ms
+26-Oct-2021 14:41:35.748 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/ROOT]
+26-Oct-2021 14:41:35.763 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/ROOT] has finished in [15] ms
+26-Oct-2021 14:41:35.769 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/host-manager]
+26-Oct-2021 14:41:35.786 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/host-manager] has finished in [18] ms
+26-Oct-2021 14:41:35.801 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+26-Oct-2021 14:41:35.829 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [574] milliseconds
+26-Oct-2021 14:49:46.070 INFO [Catalina-utility-2] org.apache.catalina.users.MemoryUserDatabase.backgroundProcess Reloading memory user database [UserDatabase] from updated source [file:/Users/miguelferreira/Desktop/Universidade/3º%20Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/conf/tomcat-users.xml]
+26-Oct-2021 14:51:26.151 INFO [Catalina-utility-1] org.apache.catalina.users.MemoryUserDatabase.backgroundProcess Reloading memory user database [UserDatabase] from updated source [file:/Users/miguelferreira/Desktop/Universidade/3º%20Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/conf/tomcat-users.xml]
+26-Oct-2021 14:51:36.158 INFO [Catalina-utility-2] org.apache.catalina.users.MemoryUserDatabase.backgroundProcess Reloading memory user database [UserDatabase] from updated source [file:/Users/miguelferreira/Desktop/Universidade/3º%20Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/conf/tomcat-users.xml]
+26-Oct-2021 15:11:34.609 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/webapp2_1-1.1.war]
+26-Oct-2021 15:11:34.656 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab2/lab2_1/apache-tomcat-9.0.54/webapps/webapp2_1-1.1.war] has finished in [47] ms
+26-Oct-2021 15:18:54.805 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+26-Oct-2021 15:18:54.808 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+26-Oct-2021 15:18:54.818 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+26-Oct-2021 15:18:54.880 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+26-Oct-2021 15:18:54.917 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
