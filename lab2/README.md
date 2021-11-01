@@ -331,3 +331,81 @@ The Output:
 {"id":6,"content":"Hello, World!"}%             
 ```
 
+
+
+<h2>REST API about Shows & Movies</h2>
+
+In this section, created an application on Spring Initializr, using the same template as in the 2.3c).
+I created a controller to manage the web request.
+I also changed the port of the application, so the address for the application was located at http://localhost:8083.
+
+Based on the `GreetingController.java`from the previous exercise, I created a `ShowController.java`.
+I also implemented two `@GetMapping` that ensures that HTTP GET requests to `/quote` and to `/shows` are mapped to the `quote()` and `show()` method respectively.
+
+When we insert `/quote`on the URL we get a random quote from a random movie. When we insert `/quote?show=value`, where value is the id of a movie, we get a random quote from the movie we asked. When we insert `/shows`we get a list of all the shows and its id's.
+
+
+
+<h2>Review Questions</h2>
+
+**A. What are the responsibilities/services of a “servlet container”?**
+
+O *servlet container* é um componente do servidor responsável pela gestão dos pedidos que permite a geração de páginas dinâmicas.
+A *servlet container* is a component of the server that manages requests and uses java to dynamically generate the web page on the server side. So, to sum up, the servlet container is essentially a part of a web server that interacts with the servlets.
+
+**B. Explain, in brief, the “dynamics” of Model-View-Controller approach used in Spring Boot to serve web content. (You may exemplify with the context of the previous exercises.)**
+
+![MVC](https://static.javatpoint.com/sppages/images/spring-web-model-view-controller.png)
+
+- **Model** - A model contains the data of the application. A data can be a single object or a collection of objects.
+- **Controller** - A controller contains the business logic of an application. Here, the @Controller annotation is used to mark the class as the controller.
+- **View** - A view represents the provided information in a particular format. Generally, JSP+JSTL is used to create a view page. Although spring also supports other view technologies such as Apache Velocity, Thymeleaf and FreeMarker.
+- **Front Controller** - In Spring Web MVC, the DispatcherServlet class works as the front controller. It is responsible to manage the flow of the Spring MVC application.
+
+**C. Inspect the POM.xml for the previous Spring Boot projects. What is the role of the “starters” dependencies?**
+
+The single `spring-boot-starter-web` dependency transitively pulls in all dependencies related to web development. It also reduces the build dependency count.
+
+Using `spring-boot-starter-test` we don't need to upgrade testing libraries and keep them compatible manually. We'll get an opinionated set of libraries and can start writing tests without further setup effort.
+This starter includes Spring-specific dependencies and dependencies for auto-configuration and a set of testing libraries. This includes JUnit, Mockito, Hamcrest, AssertJ, JSONassert, and JsonPath. 
+
+**D. Which annotations are transitively included in the @SpringBootApplication?**
+
+`@SpringBootApplication` is a convenience annotation that adds all of the following:
+
+- `@Configuration`: Tags the class as a source of bean definitions for the application context.
+- `@EnableAutoConfiguration`: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. For example, if `spring-webmvc` is on the classpath, this annotation flags the application as a web application and activates key behaviors, such as setting up a `DispatcherServlet`.
+- `@ComponentScan`: Tells Spring to look for other components, configurations, and services in the `com/example` package, letting it find the controllers.
+
+**E. Search online for the topic “Best practices for REST API design”. From what you could learn, select your “top 5” practices, and briefly explain them in you own words.**
+
+1. Use JSON as the format for sending and receiving data
+
+   Accepting and responding to API requests used to be done with XML and HTML. Nowadays, JSON is more used because it is way easier to encode and decode than XML, for example.
+
+2. Use nouns instead of verbs in endpoints
+
+   We should not use verbs in endpoints. Instead, we should use nouns explaining what each endpoint does.
+   This is because HTTP methods such as `GET`, `POST`, `PUT`, etc are already in verb form.
+   So, in short, we should keep the endpoint name only as a non and let the HTTP verbs handle what the endpoints do.
+
+3. Name collections with plural nouns
+
+   An API is a collection of different resources. If we have an endpoint named `/post` this can mislead the user to think that there is only one post and the user could mis-delete them all. To solve this, the best naming is `/posts` so that the user will know that there are many posts.
+
+4. Use Nesting on Endpoints to show relationships
+
+   Nesting endpoints like `/posts/author` and `/posts/postId/comments`are useful because it shows the relationship that exist and helps keeping the API more organized.
+
+5. Provide accurate API documentation 
+
+   It is important to have a clear and accurate documentation because it can help new consumers to understand how the API works and even old consumers to consolidate some aspects of the API usage.
+
+   The documentation should contain:
+
+   - relevant endpoints of the API
+   - example requests of the endpoints
+   - implementation in several programming languages
+   - messages listed for different errors with their status codes
+
+   One of the most common tools we can use for API documentation is Swagger.
