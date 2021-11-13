@@ -3,6 +3,7 @@ package com.ies.ex3_2.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -68,5 +69,28 @@ public class EmployeeController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
+    }
+
+    // @GetMapping("/employees?email={email}")
+    // public ResponseEntity<Employee> getEmployeeByEmail(@PathVariable(value = "email") String employeeEmail)
+    //     throws ResourceNotFoundException {
+    //         Long id=0L;
+    //         for(Employee e: employeeRepository.findAll())
+    //         {
+    //             if(e.getEmailId().equals(employeeEmail))
+    //             {
+    //                 id = e.getId();
+    //             }
+    //         }
+    //     Employee employee = employeeRepository.findById(id)
+    //       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this email :: " + employeeEmail));
+    //     return ResponseEntity.ok().body(employee);
+    // }
+    @GetMapping("/employees?email={email}")
+    public ResponseEntity<Employee> getEmployeeByEmail(@PathVariable(value = "email") String employeeEmail)
+    throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findByEmail("")
+          .orElseThrow(() -> new EmailDoesNotExistException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
     }
 }

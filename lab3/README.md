@@ -193,6 +193,30 @@ Now we'll have to deal with the Exceptions: we can specify the Response Status f
 
 `GlobalExceptionHandler`(that has the *@ControllerAdvice* annotation) handles exception-specific and global exceptions in a single place.
 
+<h3>Testing the application</h3>
+
+Now, using the Postman utility to send a POST request to `http:localhost:8080/api/v1/employees` we get an auto generated ID:
+
+![Screenshot 2021-11-13 at 22.28.44](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.28.44.png)
+
+Using the GET to get one Employee:
+
+![Screenshot 2021-11-13 at 22.39.26](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.39.26.png)
+
+Using the GET to get all Employees:
+
+![Screenshot 2021-11-13 at 22.40.21](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.40.21.png)
+
+Using PUT method to update one of the Employees:
+
+![Screenshot 2021-11-13 at 22.42.08](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.42.08.png)
+
+Using the DELETE method to delete an Employee:
+
+![Screenshot 2021-11-13 at 22.42.56](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.42.56.png)
+
+
+
 
 
 
