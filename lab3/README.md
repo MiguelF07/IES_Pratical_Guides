@@ -197,23 +197,25 @@ Now we'll have to deal with the Exceptions: we can specify the Response Status f
 
 Now, using the Postman utility to send a POST request to `http:localhost:8080/api/v1/employees` we get an auto generated ID:
 
-![Screenshot 2021-11-13 at 22.28.44](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.28.44.png)
+<img width="1392" alt="Screenshot 2021-11-13 at 22 28 44" src="https://user-images.githubusercontent.com/66647922/141662198-c0c71e43-0bd7-4b74-b17e-c19dcb4c85e9.png">
 
 Using the GET to get one Employee:
 
-![Screenshot 2021-11-13 at 22.39.26](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.39.26.png)
+<img width="1392" alt="Screenshot 2021-11-13 at 22 39 26" src="https://user-images.githubusercontent.com/66647922/141662213-4eef55be-e2b0-45cc-a09d-1307b217cf66.png">
 
 Using the GET to get all Employees:
 
-![Screenshot 2021-11-13 at 22.40.21](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.40.21.png)
+<img width="1392" alt="Screenshot 2021-11-13 at 22 40 21" src="https://user-images.githubusercontent.com/66647922/141662221-c15462c8-63d6-48a5-b6f8-5f52bfa452b8.png">
 
 Using PUT method to update one of the Employees:
 
-![Screenshot 2021-11-13 at 22.42.08](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.42.08.png)
+<img width="1392" alt="Screenshot 2021-11-13 at 22 42 08" src="https://user-images.githubusercontent.com/66647922/141662228-614c5289-ec46-4a40-bc4f-d4a0c374a1cd.png">
 
 Using the DELETE method to delete an Employee:
 
-![Screenshot 2021-11-13 at 22.42.56](/Users/miguelferreira/Desktop/Universidade/3º Ano/IES/IES_98599/lab3/Screenshots/Screenshot 2021-11-13 at 22.42.56.png)
+<img width="1392" alt="Screenshot 2021-11-13 at 22 42 56" src="https://user-images.githubusercontent.com/66647922/141662236-0e050eb5-48c4-4c28-b037-5c0040d606d5.png">
+
+
 
 
 
