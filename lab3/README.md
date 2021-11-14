@@ -215,7 +215,15 @@ Using the DELETE method to delete an Employee:
 
 <img width="1392" alt="Screenshot 2021-11-13 at 22 42 56" src="https://user-images.githubusercontent.com/66647922/141662236-0e050eb5-48c4-4c28-b037-5c0040d606d5.png">
 
+Now, on g) I added a findByEmail feature to the repository.
 
+To get the user we use the GET method:
+
+<img width="1392" alt="Screenshot 2021-11-14 at 19 38 11" src="https://user-images.githubusercontent.com/66647922/141695890-41115e7c-35d6-4042-bac7-48e3d0cc22d6.png">
+
+<h2>3.3 Wrapping-up and integrating concepts</h2>
+
+The meaning of `CascadeType.ALL` is that the persistence will propagate (cascade) all operations to the relating entities.
 
 
 

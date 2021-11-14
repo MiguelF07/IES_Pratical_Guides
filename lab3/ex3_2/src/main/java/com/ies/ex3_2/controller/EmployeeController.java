@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ies.ex3_2.exception.EmailDoesNotExistException;
 import com.ies.ex3_2.exception.ResourceNotFoundException;
 import com.ies.ex3_2.model.Employee;
 import com.ies.ex3_2.repository.EmployeeRepository;
@@ -88,9 +89,9 @@ public class EmployeeController {
     // }
     @GetMapping("/employees?email={email}")
     public ResponseEntity<Employee> getEmployeeByEmail(@PathVariable(value = "email") String employeeEmail)
-    throws ResourceNotFoundException {
-        Employee employee = employeeRepository.findByEmail("")
-          .orElseThrow(() -> new EmailDoesNotExistException("Employee not found for this id :: " + employeeId));
+    throws EmailDoesNotExistException {
+        Employee employee = employeeRepository.findByEmailId(employeeEmail)
+          .orElseThrow(() -> new EmailDoesNotExistException("Employee not found for this email :: " + employeeEmail));
         return ResponseEntity.ok().body(employee);
     }
 }
