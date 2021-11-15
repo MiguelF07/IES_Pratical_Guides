@@ -225,9 +225,36 @@ To get the user we use the GET method:
 
 The meaning of `CascadeType.ALL` is that the persistence will propagate (cascade) all operations to the relating entities.
 
+[This Link](https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api) explains what `FetchType.LAZY` is about, but, to sum up, it only fetches the list of quotes when the `getQuotes()` method is called
+
+For this project I created a new database, using the previous docker container with modified parameters:
+
+```bash
+$ docker run --name mysql3_3 -e MYSQL_ROOT_PASSWORD=secret1 -e MYSQL_DATABASE=3_3 -e MYSQL_USER=3_3 -e MYSQL_PASSWORD=secret2 -p 33062:3306 -d mysql/mysql-server:5.7 
+```
+
+And changed the properties file to match those settings.
+
+DUVIDA: I dont know how to add a movie with quotes. And I dont know how to add a quote because i need a movie
 
 
 
+<h2>Review Questions</h2>
 
+**A) Explain the differences between the RestController and Controller components used in different parts of this lab.**
 
+The `@Controller` annotation represents the classic controllers. This annotation is typically used with `@RequestMapping` annotation for request handling methods. When we use this method, we need a separate `@ResponseBody`annotation to enable automatic serialization of the returned object into the *HttpResponse*.
 
+The `@RestController` is a specialized version of the controller. It includes the `@Controller` and `@ResponseBod` annotations, and as a result, simplifies the controller implementation.
+
+**B) Create a visualization of the Spring Boot layers (UML diagram or similar), displaying the key abstractions in the solution of 3.3, in particular: entities, repositories, services and REST controllers. Describe the role of the elements modeled in the diagram.**
+
+ANSWER
+
+**C) Explain the annotations @Table, @Colum, @Id found in the Employee entity.**
+
+`@Table` -> When we create a `@Entity` annotation we're representing a Table stored in the database. When we use `@Table` after `@Entity` we're specifying the name of the table, that will not be the same as the name of the entity, in this case. If we do not use the `@Table` annotation, the name of the entity and the name of the table will be the same.
+
+**D) Explain the use of the annotation @AutoWired (in the Rest Controller class).**
+
+Just like mentioned before, the `@Autowired` annotation provides **more fine-grained control over where and how autowiring should be accomplished**. The `@Autowired` annotation can be used to autowire bean on the setter method just like `@Required` annotation, constructor, a property or methods with arbitrary names and/or multiple arguments.
