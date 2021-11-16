@@ -7,7 +7,9 @@ import com.ies.ex3_3.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -36,12 +38,15 @@ public class MovieQuoteService {
         return movieRep.findById(id).orElse(null);
     }
 
-    public Movie getRandMovie() {
-        int moviesNr = movieRep.findAll().size();
+    public Movie getRandMovie() { //In this function i used this method because there may be ID's with no content. Same for the getRandQuote
+        List<Long> listIds= new ArrayList<>();
+        for(Movie m:movieRep.findAll())
+        {
+            listIds.add(m.getId());
+        }
         Random r = new Random();
-        int option = r.nextInt(moviesNr);
-        Long randId = Long.valueOf(option);
-        return movieRep.findById(randId).orElse(null);
+        int option = r.nextInt(listIds.size());
+        return movieRep.findById(listIds.get(option)).orElse(null);
     }
 
     public String deleteMovie(Long id) {
@@ -74,6 +79,38 @@ public class MovieQuoteService {
 
     public Quote getQuoteById(Long id) {
         return quoteRep.findById(id).orElse(null);
+    }
+
+    public Quote getRandQuote() {
+        List<Long> listIds= new ArrayList<>();
+        for(Quote q:quoteRep.findAll())
+        {
+            listIds.add(q.getId());
+        }
+        Random r = new Random();
+        int option = r.nextInt(listIds.size());
+        return quoteRep.findById(listIds.get(option)).orElse(null);
+    }
+
+    public Quote getRandQuoteForMovie(Long movieId) {
+        List<Long> listQts= new ArrayList<>();
+        Optional<Movie> m = movieRep.findById(movieId);
+        if(m==null)
+        {
+            return null;
+        }
+
+        for(Quote q:quoteRep.findAll())
+        {
+            if(q.getMovie().getTitle().equals(m.get().getTitle()))
+            {
+                listQts.add(q.getId());
+            }
+
+        }
+        Random r = new Random();
+        int option = r.nextInt(listQts.size());
+        return quoteRep.findById(listQts.get(option)).orElse(null);
     }
 
     public String deleteQuote(Long id) {

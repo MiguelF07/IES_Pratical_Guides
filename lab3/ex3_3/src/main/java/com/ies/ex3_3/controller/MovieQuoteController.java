@@ -109,6 +109,28 @@ public class MovieQuoteController {
         return service.saveQuote(quote);
     }
 
+    @GetMapping("/quotes/random") //One random Movie resource is fetched
+    public ResponseEntity<Quote> getQuoteRandomly()
+        throws ResourceNotFoundException {
+            Quote quote = service.getRandQuote();
+            if(quote==null)
+            {
+                throw new ResourceNotFoundException("Quote not found.");
+            }
+            return ResponseEntity.ok().body(quote);
+        }
+
+    @GetMapping("/movies/{id}/quotes/random") //One random Movie resource is fetched
+    public ResponseEntity<Quote> getQuoteRandomlyForMovie(@PathVariable(value = "id") Long movieId)
+        throws ResourceNotFoundException {
+            Quote quote = service.getRandQuoteForMovie(movieId);
+            if(quote==null)
+            {
+                throw new ResourceNotFoundException("Quote not found.");
+            }
+            return ResponseEntity.ok().body(quote);
+        }
+
     @PutMapping("/quotes/{id}") //quote resource is updated
     public ResponseEntity<Quote> updateQuote(@PathVariable(value = "id") Long quoteId,
          @Valid @RequestBody Quote quoteDetails) throws ResourceNotFoundException {

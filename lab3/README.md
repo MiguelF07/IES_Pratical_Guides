@@ -294,7 +294,11 @@ GET /quotes:
 
 GET /quotes/random:
 
-GET /movies/{id}/quote/random:
+<img width="1552" alt="Screenshot 2021-11-16 at 18 38 15" src="https://user-images.githubusercontent.com/66647922/142045540-20fa10df-23b2-427e-892c-fc5a7bc2804f.png">
+
+GET /movies/{id}/quotes/random:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 18 36 03" src="https://user-images.githubusercontent.com/66647922/142045354-a109429c-0e05-46d7-b819-1f1a7f7fb632.png">
 
 GET /quotes/{id}:
 
