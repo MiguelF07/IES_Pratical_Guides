@@ -20,7 +20,7 @@ public class Movie {
     private long id;
     private String title;
     private int year;
-    private List<Quote> quotes = new ArrayList<Quote>();
+    //private List<Quote> quotes = new ArrayList<Quote>();
 
     public Movie() {
 
@@ -59,19 +59,19 @@ public class Movie {
         this.year = year;
     }
 
-    //@Column(name = "quotes", nullable = false)
-    @OneToMany(
-        mappedBy = "movie",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
-    )
-    public List<Quote> getQuotes() {
-        return this.quotes;
-    }
+    // //@Column(name = "quotes", nullable = false)
+    // @OneToMany(
+    //     mappedBy = "movie",
+    //     cascade = CascadeType.ALL,
+    //     orphanRemoval = true
+    // )
+    // public List<Quote> getQuotes() {
+    //     return this.quotes;
+    // }
 
-    public void setQuotes(List<Quote> quotes) {
-        this.quotes = quotes;
-    }
+    // public void setQuotes(List<Quote> quotes) {
+    //     this.quotes = quotes;
+    // }
 
 
     @Override

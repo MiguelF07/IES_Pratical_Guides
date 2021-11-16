@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class MovieQuoteService {
     @Autowired
     private MovieRepository movieRep;
+
+    @Autowired
     private QuoteRepository quoteRep;
 
     //Movie Section
@@ -33,6 +36,14 @@ public class MovieQuoteService {
         return movieRep.findById(id).orElse(null);
     }
 
+    public Movie getRandMovie() {
+        int moviesNr = movieRep.findAll().size();
+        Random r = new Random();
+        int option = r.nextInt(moviesNr);
+        Long randId = Long.valueOf(option);
+        return movieRep.findById(randId).orElse(null);
+    }
+
     public String deleteMovie(Long id) {
         movieRep.deleteById(id);
         return "Movie removed !! " + id;
@@ -42,8 +53,9 @@ public class MovieQuoteService {
         Movie existingMovie = movieRep.findById(movie.getId()).orElse(null);
         existingMovie.setTitle(movie.getTitle());
         existingMovie.setYear(movie.getYear());
-        existingMovie.setQuotes(movie.getQuotes());
-        return movieRep.save(existingMovie);
+        // existingMovie.setQuotes(movie.getQuotes());
+        Movie updated = movieRep.save(existingMovie); 
+        return updated;
     }
 
     //Quote Section
@@ -73,6 +85,7 @@ public class MovieQuoteService {
         Quote existingQuote = quoteRep.findById(quote.getId()).orElse(null);
         existingQuote.setMovie(quote.getMovie());
         existingQuote.setText(quote.getText());
-        return quoteRep.save(existingQuote);
+        Quote updated = quoteRep.save(existingQuote);
+        return updated;
     }
 }

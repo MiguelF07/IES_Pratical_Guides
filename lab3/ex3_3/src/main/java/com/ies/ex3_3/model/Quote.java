@@ -39,7 +39,7 @@ public class Quote {
 
 
     //@Column(name = "movie", nullable = false) //Describing each column
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     public Movie getMovie() {
         return this.movie;
     }

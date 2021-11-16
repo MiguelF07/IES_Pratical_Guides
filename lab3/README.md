@@ -235,7 +235,82 @@ $ docker run --name mysql3_3 -e MYSQL_ROOT_PASSWORD=secret1 -e MYSQL_DATABASE=3_
 
 And changed the properties file to match those settings.
 
-DUVIDA: I dont know how to add a movie with quotes. And I dont know how to add a quote because i need a movie
+In this project, we have different endpoints to manage data in the API. I also added two methods to retrieve random movies and random quotes.
+
+To summarize the methods are:
+
+​	**For the Movies:**
+
+​	GET /movies : Gets the list of all the movies in the database.
+​	GET /movies/random: Gets a random movie.
+​	GET /movies/{id}: Gets a specific movie, given the ID.
+​	POST /movies: Puts a new movie in the database.
+​	PUT /movies/{id}: Updates a given Movie in the database.
+​	DELETE /movies/{id}: Deletes a given Movie from the database.
+
+​	**For the Quotes:**
+
+​	GET /quotes : Gets all the quotes in the database.
+​	GET /movies/{id}/quotes/random : Gets a random quote from a specific movie from the database.
+​	GET /quotes/random : Gets a random quote from all the movies.
+​	GET /quotes/{id} : Gets a specific quote from the given ID.
+​	POST /quotes: Posts a quote into the database.
+​	PUT /quotes/{id}: Updates the quote of the given ID.
+​	DELETE /quotes/{id}: Deletes the quote with the given ID.
+
+------------------------------------
+
+<h2>Some Movies Examples</h2>
+
+GET /movies :
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 09 29" src="https://user-images.githubusercontent.com/66647922/142011113-c1c1c648-b314-4e61-aeb4-2a42c1416b93.png">
+
+GET /movies/random
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 45 38" src="https://user-images.githubusercontent.com/66647922/142017796-3911830a-25fa-4dc5-aa8a-fda1514126b1.png">
+
+GET /movies/{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 10 35" src="https://user-images.githubusercontent.com/66647922/142011258-5282ee83-7fc2-4bed-b9a6-5e17d81b6e98.png">
+
+POST /movies:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 12 13" src="https://user-images.githubusercontent.com/66647922/142011549-58b90b99-79d6-4f94-bbe8-de327244c5f0.png">
+
+PUT /movies/{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 16 44 37" src="https://user-images.githubusercontent.com/66647922/142028120-289fe45c-20c0-459d-b254-ff9f93bfea2c.png">
+
+DELETE /movies/{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 26 54" src="https://user-images.githubusercontent.com/66647922/142014436-5ab2e4a9-91a1-4708-a3e3-427ebf7ca05b.png">
+
+<h2>Some Quotes Examples</h2>
+
+GET /quotes:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 31 32" src="https://user-images.githubusercontent.com/66647922/142015203-f3331860-5564-4a80-bbdd-21a1d8c724ef.png">
+
+GET /quotes/random:
+
+GET /movies/{id}/quote/random:
+
+GET /quotes/{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 32 58" src="https://user-images.githubusercontent.com/66647922/142015424-6d1e07b9-2dec-4221-aa92-ff73f61167d6.png">
+
+POST /quotes:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 15 35 31" src="https://user-images.githubusercontent.com/66647922/142015893-923cecd1-0293-4bc8-8a03-ca1048503f9b.png">
+
+PUT /quotes{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 16 52 13" src="https://user-images.githubusercontent.com/66647922/142029379-130a49a7-697c-482c-81aa-693972f85211.png">
+
+DELETE /quotes{id}:
+
+<img width="1552" alt="Screenshot 2021-11-16 at 16 53 55" src="https://user-images.githubusercontent.com/66647922/142029614-ec363de3-bbd9-4d73-840c-b4bc823dd9aa.png">
 
 
 

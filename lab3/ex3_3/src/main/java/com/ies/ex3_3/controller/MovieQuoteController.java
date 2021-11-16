@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +43,17 @@ public class MovieQuoteController {
         }
         return ResponseEntity.ok().body(movie);
     }
+
+    @GetMapping("/movies/random") //One random Movie resource is fetched
+    public ResponseEntity<Movie> getMovieRandomly()
+        throws ResourceNotFoundException {
+            Movie movie = service.getRandMovie();
+            if(movie==null)
+            {
+                throw new ResourceNotFoundException("Movie not found.");
+            }
+            return ResponseEntity.ok().body(movie);
+        }
     
     @PostMapping("/movies") //A new movie resource is created
     public Movie createMovie(@Valid @RequestBody Movie movie) {
@@ -58,7 +68,8 @@ public class MovieQuoteController {
         {
             throw new ResourceNotFoundException("Movie not found for this id :: " + movieId);
         }
-        return ResponseEntity.ok(service.updateMovie(movie));
+        movieDetails.setId(movieId);
+        return ResponseEntity.ok(service.updateMovie(movieDetails));
     }
 
     @DeleteMapping("/movies/{id}") //Movie resource is deleted
@@ -106,7 +117,8 @@ public class MovieQuoteController {
         {
             throw new ResourceNotFoundException("Quote not found for this id :: " + quoteId);
         }
-        return ResponseEntity.ok(service.updateQuote(quote));
+        quoteDetails.setId(quoteId);
+        return ResponseEntity.ok(service.updateQuote(quoteDetails));
     }
 
     @DeleteMapping("/quotes/{id}") //Quote resource is deleted
@@ -118,7 +130,7 @@ public class MovieQuoteController {
                 throw new ResourceNotFoundException("Quote not found for this id :: " + quoteId);
             }
 
-        service.deleteMovie(quoteId);
+        service.deleteQuote(quoteId);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
