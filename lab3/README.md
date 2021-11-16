@@ -135,15 +135,15 @@ Autowiring feature of **spring framework enables you to inject the object depend
 
 ***List the methods invoked in the “userRepository” object by the “UserController”. Where are these methods defined?***
 
-Answer
+The `findById()` method that doesn't need to be defined, and the `findByEmail()`that is declared on the repository body.
 
 ***Where is the data being saved?***
 
-Answer
+The data is being saved in a local database that is not persistent.
 
 ***Where is the rule for the “not empty” email address defined?***
 
-Answer
+The `@NotBlank`annotation that is on every field of the user.
 
 
 
@@ -316,6 +316,72 @@ DELETE /quotes{id}:
 
 <img width="1552" alt="Screenshot 2021-11-16 at 16 53 55" src="https://user-images.githubusercontent.com/66647922/142029614-ec363de3-bbd9-4d73-840c-b4bc823dd9aa.png">
 
+<h2>Dockerizing the Application</h2>
+
+To dockerize I tried two different methods but with no success.
+
+Following the [guide tutorial](https://spring.io/guides/topicals/spring-boot-docker/) I tried this implementation:
+
+```bash
+$ cd pathToProject
+$ ./mvnw clean package
+$ cd target
+$ mkdir dependency
+$ cd dependency
+$ jar -xf ../*.jar
+$ docker build -t myorg/myapp .
+```
+
+With this Dockerfile:
+
+```dockerfile
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG DEPENDENCY=target/dependency
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","Ex33Application.java"]
+```
+
+But it didn't work, I had an error trying to build the docker image.
+
+Then I tried following [this tutorial](https://www.callicoder.com/spring-boot-mysql-react-docker-compose-example/).
+
+I had the following DockerFile:
+
+```dockerfile
+FROM openjdk:11 as build
+
+WORKDIR /app
+
+COPY mvnw .
+COPY .mvn .mvn
+
+COPY pom.xml .
+
+
+RUN ./mvnw dependency:go-offline -B
+
+COPY src src
+
+RUN ./mvnw package -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+FROM openjdk:11
+
+ARG DEPENDENCY=/app/target/dependency
+
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.ies.ex3_3.Ex33Application"]
+```
+
+The image was built but running the application didn't work because somehow there was a problem with connecting to MySQL.
+I suppose it is because both MySQL and the Application are in two different docker containers.
+
 
 
 <h2>Review Questions</h2>
@@ -328,7 +394,19 @@ The `@RestController` is a specialized version of the controller. It includes th
 
 **B) Create a visualization of the Spring Boot layers (UML diagram or similar), displaying the key abstractions in the solution of 3.3, in particular: entities, repositories, services and REST controllers. Describe the role of the elements modeled in the diagram.**
 
-ANSWER
+![UML_Diagram_3_3](https://user-images.githubusercontent.com/66647922/142046644-82db714e-a6be-420c-9636-1c64289d2754.png)
+
+Role of the elements:
+
+* **Movie** : Defines `Movie` objects.
+* **Quote** : Defines `Quote` objects.
+* **MovieRepository** : Manages the Movies database data (with CRUD operations)
+* **QuoteRepository** : Manages the Quotes database data (with CRUD operations)
+* **MovieQuoteService** : Separates the Repository from the RestController, creating a bridge between them. The RestController makes operations in the repository only through this service.
+* **MovieQuoteController** : Rest Controller that manages HTTP Requests. It has many endpoints and manages what happens on each.
+* **ResourceNotFoundException** : Is a class where we can specify the Response Status for a specific exception
+* **ErrorDetails** : Specific error response structure
+* **GlobalExceptionHandler** : Handles exception-specific and global exceptions in a single place.
 
 **C) Explain the annotations @Table, @Colum, @Id found in the Employee entity.**
 
