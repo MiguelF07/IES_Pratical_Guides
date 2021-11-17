@@ -5,5 +5,6 @@ This is the repository where I'll keep my IES Pratical Guides updated and ready 
 
 * Lab 1 (Complete)
 * Lab 2 (Complete)
+* Lab 3 (Complete)
 
 Miguel Ferreira 98599

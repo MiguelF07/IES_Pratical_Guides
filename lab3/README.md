@@ -318,7 +318,7 @@ DELETE /quotes{id}:
 
 <h2>Dockerizing the Application</h2>
 
-To dockerize I tried two different methods but with no success.
+To dockerize I tried two different methods but only the last one succeeded.
 
 Following the [guide tutorial](https://spring.io/guides/topicals/spring-boot-docker/) I tried this implementation:
 
@@ -348,7 +348,7 @@ But it didn't work, I had an error trying to build the docker image.
 
 Then I tried following [this tutorial](https://www.callicoder.com/spring-boot-mysql-react-docker-compose-example/).
 
-I had the following DockerFile:
+I have the following DockerFile:
 
 ```dockerfile
 FROM openjdk:11 as build
@@ -380,7 +380,53 @@ ENTRYPOINT ["java","-cp","app:app/lib/*","com.ies.ex3_3.Ex33Application"]
 ```
 
 The image was built but running the application didn't work because somehow there was a problem with connecting to MySQL.
-I suppose it is because both MySQL and the Application are in two different docker containers.
+This happened because the apps were running on two different containers.
+
+The solution was to create a Docker-Compose file that linked the two containers and ran them.
+
+The docker-compose file has the following content:
+
+```dockerfile
+version: "3"
+services:
+
+  mysql:
+    image: mysql/mysql-server:5.7
+    container_name: mysql5
+    command: mysqld 
+    volumes:
+      - mysql-data:/var/local/mysql/data
+    ports:
+      - "33061:3306"
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret1
+      - MYSQL_USER=demo
+      - MYSQL_DATABASE=demo
+      - MYSQL_PASSWORD=secret2
+
+  maven-app:
+    container_name: ex3-maven-app-1
+    image: maven-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - 8080:8080
+    depends_on:
+      - "mysql"
+    command: [ "./mvnw", "spring-boot:run" ]
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql:3306/demo
+      - spring.datasource.username=demo
+      - spring.datasource.password=secret2
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
+      - spring.jpa.hibernate.ddl-auto=update
+
+volumes:
+  mysql-data:
+    driver: local
+```
 
 
 
